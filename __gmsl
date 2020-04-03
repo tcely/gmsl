@@ -109,10 +109,10 @@ __gmsl_have_lastword := $(lastword $(false) $(true))
 
 # See if we have native or and and (GNU Make 3.81 and above)
 
-__gmsl_have_or := $(if $(filter-out undefined,  \
-    $(origin or)),$(call or,$(true),$(false)))
-__gmsl_have_and := $(if $(filter-out undefined, \
-    $(origin and)),$(call and,$(true),$(true)))
+__or_tt := /$(or $(true),$(true))/$(or $(true),$(false))/$(or $(false),$(true))/$(or $(false),$(false))/
+__and_tt := /$(and $(true),$(true))/$(and $(true),$(false))/$(and $(false),$(true))/$(and $(false),$(false))/
+__gmsl_have_or := $(if $(filter /T/T/T//,$(__or_tt)),$(true),$(false))
+__gmsl_have_and := $(if $(filter /T////,$(__and_tt)),$(true),$(false))
 
 ifneq ($(__gmsl_have_eval),$(true))
 $(call __gmsl_warning,Your make version $(MAKE_VERSION) does not support $$$$(eval): some functions disabled)
