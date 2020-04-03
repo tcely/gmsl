@@ -21,5 +21,5 @@ test:
 
 .PHONY: upload
 upload:
-	@scp index.html jgrahamc,gmsl@web.sf.net:/home/project-web/gmsl/htdocs
+	@scp index.html jgrahamc,gmsl@web.sf.net:/home/project-web/gmsl/
 
