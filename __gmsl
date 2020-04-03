@@ -396,8 +396,8 @@ __gmsl_characters += { } [ ] \ : ; ' " < > , . / ? |
 
 # This results in __gmsl_space containing just a space
 
-__gmsl_space := 
-__gmsl_space +=
+__gmsl_empty :=
+__gmsl_space := $(__gmsl_empty) $(__gmsl_empty)
 
 strlen = $(__gmsl_tr1)$(call assert_no_dollar,$0,$1)$(strip $(eval __temp := $(subst $(__gmsl_space),x,$1))$(foreach a,$(__gmsl_characters),$(eval __temp := $$(subst $$a,x,$(__temp))))$(eval __temp := $(subst x,x ,$(__temp)))$(words $(__temp)))
 
